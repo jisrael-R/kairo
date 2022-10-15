@@ -38,7 +38,7 @@ export default function HeroVid() {
                     <h6>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </h6>
-                    <a href="mailto:kairotech@kairos.com" className="hero-btn">
+                    <a href="mailto:info@kairostechservices.com" className="hero-btn">
                         Need Help?
                     </a>
                 </div>

@@ -58,15 +58,21 @@ const Navbars = () => {
                     <Navbar.Brand href="#"></Navbar.Brand>
                     <div className="rows">
                         <h4>
-                            <a href="https://www.instagram.com/kairostechservices/">
+                            <a href="https://www.instagram.com/kairostechservices/" target='_blank' rel='noreferrer'>
                                 <AiOutlineInstagram />
                             </a>
                         </h4>
                         <h4>
-                            <AiOutlineFacebook />
+                            <a href="https://www.facebook.com/people/Kairos-Tech-Services-LLC/100086430137281/" target='_blank' rel='noreferrer'>
+                                 <AiOutlineFacebook />
+                            </a>
+                           
                         </h4>
                         <h4>
-                            <AiOutlineLinkedin />
+                            <a href="https://www.linkedin.com/company/kairos-tech-services-llc/" target='_blank' rel='noreferrer'>
+                                <AiOutlineLinkedin />
+                            </a>
+                            
                         </h4>
                     </div>
                 </Container>
