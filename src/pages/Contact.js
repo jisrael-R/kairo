@@ -1,131 +1,96 @@
-import { useState } from 'react';
-import Col from 'react-bootstrap/Col';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import ServiceList from '../data';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
 
-import { useEffect, useRef } from 'react';
-import '../index.css';
+const  Contact = ()=> {
+  const [validated, setValidated] = useState(false);
 
-const Contact = () => {
-    const [services, setServices] = useState(ServiceList);
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
 
-    const videoEl = useRef(null);
+    setValidated(true);
+  };
 
-    const attemptPlay = () => {
-        videoEl &&
-            videoEl.current &&
-            videoEl.current.play().catch((error) => {
-                console.error('Error attempting to play', error);
-            });
-    };
-
-    useEffect(() => {
-        attemptPlay();
-    }, []);
-    return (
-        <div className="form-contact">
-            <Row>
-                <Col>
-                    <div className="service-title">
-                        <h1>Contact Form</h1>
-                        <div className="underline"></div>
-                    </div>
-                    <Form className="m-3 p-3">
-                        <Row className="g-2 mb-2">
-                            <Col md>
-                                <FloatingLabel
-                                    controlId="floatingInputGrid"
-                                    label="Name"
-                                >
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="John"
-                                    />
-                                </FloatingLabel>
-                            </Col>
-                            <Col md>
-                                <FloatingLabel
-                                    controlId="floatingInputGrid"
-                                    label="Last Name"
-                                >
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Smith"
-                                    />
-                                </FloatingLabel>
-                            </Col>
-                            <Col md>
-                                <FloatingLabel
-                                    controlId="floatingInputGrid"
-                                    label="Phone Number"
-                                >
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="1-800-299-9999"
-                                    />
-                                </FloatingLabel>
-                            </Col>
-                        </Row>
-
-                        <Row className="g-2">
-                            <Col md>
-                                <FloatingLabel
-                                    controlId="floatingInputGrid"
-                                    label="Email address"
-                                >
-                                    <Form.Control
-                                        type="email"
-                                        placeholder="name@example.com"
-                                    />
-                                </FloatingLabel>
-                            </Col>
-                            <Col md>
-                                <FloatingLabel
-                                    controlId="floatingSelectGrid"
-                                    label="Works with selects"
-                                >
-                                    <Form.Select aria-label="Floating label select example">
-                                        <option>Select a Service</option>
-                                        {services.map((service) => {
-                                            return (
-                                                <option
-                                                    className="options"
-                                                    value={service.id}
-                                                    key={service.id}
-                                                >
-                                                    {service.service.toUpperCase()}
-                                                </option>
-                                            );
-                                        })}
-                                    </Form.Select>
-                                </FloatingLabel>
-                            </Col>
-                            <FloatingLabel
-                                controlId="floatingTextarea2"
-                                label="Comments"
-                            >
-                                <Form.Control
-                                    as="textarea"
-                                    placeholder="Leave a comment here"
-                                    style={{ height: '100px' }}
-                                />
-                            </FloatingLabel>
-                            <Button
-                                variant="warning"
-                                type="submit"
-                                className=""
-                            >
-                                Submit
-                            </Button>
-                        </Row>
-                    </Form>
-                </Col>
-            </Row>
-        </div>
-    );
-};
+  return (
+    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <Row className="mb-3">
+        <Form.Group as={Col} md="4" controlId="validationCustom01">
+          <Form.Label>First name</Form.Label>
+          <Form.Control
+            required
+            type="text"
+            placeholder="First name"
+            defaultValue="Mark"
+          />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group as={Col} md="4" controlId="validationCustom02">
+          <Form.Label>Last name</Form.Label>
+          <Form.Control
+            required
+            type="text"
+            placeholder="Last name"
+            defaultValue="Otto"
+          />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group as={Col} md="4" controlId="validationCustomUsername">
+          <Form.Label>Username</Form.Label>
+          <InputGroup hasValidation>
+            <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+            <Form.Control
+              type="text"
+              placeholder="Username"
+              aria-describedby="inputGroupPrepend"
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Please choose a username.
+            </Form.Control.Feedback>
+          </InputGroup>
+        </Form.Group>
+      </Row>
+      <Row className="mb-3">
+        <Form.Group as={Col} md="6" controlId="validationCustom03">
+          <Form.Label>City</Form.Label>
+          <Form.Control type="text" placeholder="City" required />
+          <Form.Control.Feedback type="invalid">
+            Please provide a valid city.
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group as={Col} md="3" controlId="validationCustom04">
+          <Form.Label>State</Form.Label>
+          <Form.Control type="text" placeholder="State" required />
+          <Form.Control.Feedback type="invalid">
+            Please provide a valid state.
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group as={Col} md="3" controlId="validationCustom05">
+          <Form.Label>Zip</Form.Label>
+          <Form.Control type="text" placeholder="Zip" required />
+          <Form.Control.Feedback type="invalid">
+            Please provide a valid zip.
+          </Form.Control.Feedback>
+        </Form.Group>
+      </Row>
+      <Form.Group className="mb-3">
+        <Form.Check
+          required
+          label="Agree to terms and conditions"
+          feedback="You must agree before submitting."
+          feedbackType="invalid"
+        />
+      </Form.Group>
+      <Button type="submit">Submit form</Button>
+    </Form>
+  );
+}
 
 export default Contact;
