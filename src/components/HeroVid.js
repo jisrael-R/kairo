@@ -9,7 +9,7 @@ export default function HeroVid() {
         videoEl &&
             videoEl.current &&
             videoEl.current.play().catch((error) => {
-                console.error('Error attempting to play', error);
+                console.error('Erro attempting to play', error);
             });
     };
 
