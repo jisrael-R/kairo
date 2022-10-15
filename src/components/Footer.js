@@ -1,4 +1,4 @@
-import { RiMapPinLine } from 'react-icons/ri';
+
 import { BsTelephone } from 'react-icons/bs';
 import { AiOutlineMail } from 'react-icons/ai';
 import Logo from '../images/Logos/490-KairosLogo FINAL.png';
